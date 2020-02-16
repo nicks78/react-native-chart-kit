@@ -110,7 +110,8 @@ class StackedBarChart extends AbstractChart {
       withHorizontalLabels = true,
       withVerticalLabels = true,
       segments = 4,
-      decimalPlaces
+      decimalPlaces,
+      showLegend
     } = this.props;
     const { borderRadius = 0 } = style;
     const config = {
@@ -179,11 +180,13 @@ class StackedBarChart extends AbstractChart {
               paddingRight: paddingRight + 20
             })}
           </G>
-          {this.renderLegend({
+          {showLegend ? 
+            this.renderLegend({
             ...config,
             legend: data.legend,
             colors: this.props.data.barColors
-          })}
+          })
+          : null }
         </Svg>
       </View>
     );
